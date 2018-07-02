@@ -17,18 +17,20 @@ eq_clean_data(file)
 path and file name}
 }
 \value{
-This function returns a clean dataframe with 4 fields:
+This function returns a cleaned dataframe, from \code{YEAR = 1970} 
+onwards, with the following 5 fields:
 \itemize{
  \item{DATE}
  \item{LATITUDE}
  \item{LONGITUDE}
+ \item{COUNTRY}
  \item{LOCATION}
 }
 }
 \description{
 This function takes the raw dataset and returns 
 it in a readable format. The function also omits records with
-\code{NA} values. If the file does not exist, then the function 
+\code{NA} values. If the file does not exist, then the function
 will print an error message and return a \code{NULL} object.
 }
 \examples{

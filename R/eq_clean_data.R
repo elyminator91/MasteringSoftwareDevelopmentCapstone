@@ -2,21 +2,23 @@
 #' 
 #' @description This function takes the raw dataset and returns 
 #' it in a readable format. The function also omits records with
-#' \code{NA} values. If the file does not exist, then the function 
+#' \code{NA} values. If the file does not exist, then the function
 #' will print an error message and return a \code{NULL} object.
 #'
 #' @param file A character string representing the dataset file
 #'   path and file name
 #' 
 #' @importFrom readr read_delim
-#' @importFrom dplyr select mutate rename
+#' @importFrom dplyr select mutate rename filter
 #' @importFrom lubridate dmy
 #'
-#' @return This function returns a clean dataframe with 4 fields:
+#' @return This function returns a cleaned dataframe, from \code{YEAR = 1970} 
+#' onwards, with the following 5 fields:
 #' \itemize{
 #'  \item{DATE}
 #'  \item{LATITUDE}
 #'  \item{LONGITUDE}
+#'  \item{COUNTRY}
 #'  \item{LOCATION}
 #' }
 #' 
@@ -40,13 +42,14 @@ eq_clean_data <- function(file){
   
   if(!is.null(raw_data)){
     clean_data <- raw_data %>% 
-      dplyr::select(YEAR, MONTH, DAY, LATITUDE, LONGITUDE, LOCATION_NAME) %>%
+      dplyr::select(YEAR, MONTH, DAY, LATITUDE, LONGITUDE, COUNTRY, LOCATION_NAME) %>%
       dplyr::mutate(DATE = lubridate::dmy(paste(DAY, MONTH, YEAR, sep = "/")),
                     LATITUDE = as.numeric(LATITUDE),
                     LONGITUDE = as.numeric(LONGITUDE)) %>%
       dplyr::rename(LOCATION = LOCATION_NAME) %>%
       na.omit() %>%
-      dplyr::select(DATE, LATITUDE, LONGITUDE, LOCATION)
+      dplyr::filter(DATE >= lubridate::dmy("01011970")) %>%
+      dplyr::select(DATE, LATITUDE, LONGITUDE, COUNTRY, LOCATION)
   }else{
     clean_data <- raw_data
   }
