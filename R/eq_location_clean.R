@@ -36,18 +36,18 @@ eq_location_clean <- function(clean_data){
     clean_data <- tryCatch({
       clean_data %>%
         dplyr::mutate_(LOCATION = ~LOCATION %>%
-                       stringr::str_replace(paste0(COUNTRY, ": "), "") %>%
-                       stringr::str_to_title())
-      }, error = function(e){
-        print(paste("Invalid dataframe object. Columns should include",
-                    "DATE, LATITUDE, LONGITUTE, COUNTRY, LOCATION,",
-                    "RICHTER_SCALE, DEATH_COUNT"))
-        return(NULL)
-      })
+                         stringr::str_replace(paste0(COUNTRY, ": "), "") %>%
+                         stringr::str_to_title())
+    }, error = function(e){
+      print(paste("Invalid dataframe object. Columns should include",
+                  "DATE, LATITUDE, LONGITUTE, COUNTRY, LOCATION,",
+                  "RICHTER_SCALE, DEATH_COUNT"))
+      return(NULL)
+    })
   }else{
     print("Invalid variable type. Should be dataframe object.")
     return(NULL)
   }
-
+  
   return(clean_data)
 }
