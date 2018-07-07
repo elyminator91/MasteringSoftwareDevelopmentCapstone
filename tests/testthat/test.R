@@ -1,7 +1,9 @@
 
 context("Clean Data")
 
-test_file <- eq_clean_data("./inst/extdata/dataset.txt")
+test_file <- eq_clean_data(system.file("extdata", "dataset.txt", 
+                                       package = "MasteringSoftwareDevelopmentCapstone"))
+
 tryCatch({
   expect_that(test_file, is_a("data.frame"))
   expect_that(dim(test_file), is_equivalent_to(c(3268, 7)))
