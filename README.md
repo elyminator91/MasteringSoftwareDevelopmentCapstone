@@ -12,4 +12,4 @@ The following 6 functions are included in this package:
   <li>`eq_create_label()`
 </ol>
 
-For worked examples, please refer to vignette documention in  [`./inst/doc/MasteringSoftwareDevelopCapstone.html`](https://github.com/elyminator91/MasteringSoftwareDevelopmentCapstone/inst/doc/MasteringSoftwareDevelopmentCapstone.html)
+For worked examples, please refer to vignette documention in  [`./vignettes/MasteringSoftwareDevelopCapstone.html`](https://github.com/elyminator91/MasteringSoftwareDevelopmentCapstone/vignettes/MasteringSoftwareDevelopmentCapstone.html)
