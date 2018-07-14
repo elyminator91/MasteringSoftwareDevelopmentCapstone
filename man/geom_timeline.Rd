@@ -51,7 +51,7 @@ This function plots a timeline of the earthquates that
 }
 \examples{
 \dontrun{ggplot(data = y, aes(x = DATE, country = COUNTRY, label = LOCATION, 
-                     magnitude = RICHTER_SCALE)) + 
+                     magnitude = MAGNITUDE)) + 
   geom_timeline(ctry = "USA", xmin = dmy("01/01/2010"), xmax = dmy("01/01/2016")) +
   theme_classic()}
 }

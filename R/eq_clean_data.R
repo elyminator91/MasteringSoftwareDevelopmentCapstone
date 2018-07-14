@@ -2,11 +2,11 @@
 #' 
 #' @description This function takes the raw dataset and returns 
 #' it in a readable format. The function also omits records with
-#' \code{NA} values for \code{YEAR}, \code{MONTH}, \code{DAY} and
-#' \code{EQ_PRIMARY}. If \code{TOTAL_DEATHS} is \code{NA}, then
-#' the function will return \code{DEATH_COUNT = 0}. If the file 
-#' does not exist, then the function will print an error message 
-#' and return a \code{NULL} object.
+#' \code{NA} values for \code{YEAR}, \code{MONTH}, \code{DAY}, 
+#' \code{EQ_PRIMARY} and \code{INTENSITY}. If \code{TOTAL_DEATHS} 
+#' is \code{NA}, then the function will return \code{DEATH_COUNT = 0}. 
+#' If the file does not exist, then the function will print an error 
+#' message and return a \code{NULL} object.
 #'
 #' @param file A character string representing the dataset file
 #'   path and file name
@@ -16,14 +16,15 @@
 #' @importFrom lubridate dmy
 #'
 #' @return This function returns a cleaned dataframe, from \code{YEAR = 1900} 
-#' onwards, with the following 7 fields:
+#' onwards, with the following 8 fields:
 #' \itemize{
 #'  \item{DATE}
 #'  \item{LATITUDE}
 #'  \item{LONGITUDE}
 #'  \item{COUNTRY}
 #'  \item{LOCATION}
-#'  \item{RICHTER_SCALE}
+#'  \item{MAGNITUDE}
+#'  \item{INTENSITY}
 #'  \item{DEATH_COUNT}
 #' }
 #' 
@@ -48,20 +49,21 @@ eq_clean_data <- function(file){
   if(!is.null(raw_data)){
     clean_data <- raw_data %>% 
       dplyr::select(YEAR, MONTH, DAY, LATITUDE, LONGITUDE, COUNTRY, LOCATION_NAME,
-                    EQ_PRIMARY, TOTAL_DEATHS) %>%
+                    EQ_PRIMARY, INTENSITY, TOTAL_DEATHS) %>%
       dplyr::filter(YEAR >= 1900, MONTH >= 1, DAY >= 1,
-                    !is.na(EQ_PRIMARY)) %>%
+                    !is.na(EQ_PRIMARY), !is.na(INTENSITY)) %>%
       dplyr::mutate(DATE = lubridate::dmy(paste(DAY, MONTH, YEAR, sep = "/")),
                     LATITUDE = as.numeric(LATITUDE),
                     LONGITUDE = as.numeric(LONGITUDE),
                     EQ_PRIMARY = as.numeric(EQ_PRIMARY),
+                    INTENSITY = as.numeric(INTENSITY),
                     TOTAL_DEATHS = ifelse(is.na(TOTAL_DEATHS), 0, TOTAL_DEATHS),
                     TOTAL_DEATHS = as.numeric(TOTAL_DEATHS)) %>%
       dplyr::rename(LOCATION = LOCATION_NAME, 
-                    RICHTER_SCALE = EQ_PRIMARY,
+                    MAGNITUDE = EQ_PRIMARY,
                     DEATH_COUNT = TOTAL_DEATHS) %>%
       dplyr::select(DATE, LATITUDE, LONGITUDE, COUNTRY, LOCATION, 
-                    RICHTER_SCALE, DEATH_COUNT)
+                    MAGNITUDE, INTENSITY, DEATH_COUNT)
   }else{
     clean_data <- raw_data
   }

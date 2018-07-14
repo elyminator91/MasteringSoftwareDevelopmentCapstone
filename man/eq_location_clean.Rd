@@ -12,14 +12,15 @@ eq_location_clean(clean_data)
 }
 \value{
 This function returns a cleaned dataframe, with the 
-following 7 fields:
+following 8 fields:
 \itemize{
  \item{DATE}
  \item{LATITUDE}
  \item{LONGITUDE}
  \item{COUNTRY}
  \item{LOCATION}
- \item{RICHTER_SCALE}
+ \item{MAGNITUDE}
+ \item{INTENSITY}
  \item{DEATH_COUNT}
 }
 }

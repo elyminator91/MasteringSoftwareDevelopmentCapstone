@@ -18,25 +18,26 @@ path and file name}
 }
 \value{
 This function returns a cleaned dataframe, from \code{YEAR = 1900} 
-onwards, with the following 7 fields:
+onwards, with the following 8 fields:
 \itemize{
  \item{DATE}
  \item{LATITUDE}
  \item{LONGITUDE}
  \item{COUNTRY}
  \item{LOCATION}
- \item{RICHTER_SCALE}
+ \item{MAGNITUDE}
+ \item{INTENSITY}
  \item{DEATH_COUNT}
 }
 }
 \description{
 This function takes the raw dataset and returns 
 it in a readable format. The function also omits records with
-\code{NA} values for \code{YEAR}, \code{MONTH}, \code{DAY} and
-\code{EQ_PRIMARY}. If \code{TOTAL_DEATHS} is \code{NA}, then
-the function will return \code{DEATH_COUNT = 0}. If the file 
-does not exist, then the function will print an error message 
-and return a \code{NULL} object.
+\code{NA} values for \code{YEAR}, \code{MONTH}, \code{DAY}, 
+\code{EQ_PRIMARY} and \code{INTENSITY}. If \code{TOTAL_DEATHS} 
+is \code{NA}, then the function will return \code{DEATH_COUNT = 0}. 
+If the file does not exist, then the function will print an error 
+message and return a \code{NULL} object.
 }
 \examples{
 \dontrun{eq_clean_data("./inst/extdata/dataset.txt")}

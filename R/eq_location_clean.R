@@ -11,14 +11,15 @@
 #'   \code{eq_clean_data} function
 #'
 #' @return This function returns a cleaned dataframe, with the 
-#' following 7 fields:
+#' following 8 fields:
 #' \itemize{
 #'  \item{DATE}
 #'  \item{LATITUDE}
 #'  \item{LONGITUDE}
 #'  \item{COUNTRY}
 #'  \item{LOCATION}
-#'  \item{RICHTER_SCALE}
+#'  \item{MAGNITUDE}
+#'  \item{INTENSITY}
 #'  \item{DEATH_COUNT}
 #' }
 #' 
@@ -41,7 +42,7 @@ eq_location_clean <- function(clean_data){
     }, error = function(e){
       print(paste("Invalid dataframe object. Columns should include",
                   "DATE, LATITUDE, LONGITUTE, COUNTRY, LOCATION,",
-                  "RICHTER_SCALE, DEATH_COUNT"))
+                  "MAGNITUDE, INTENSITY, DEATH_COUNT"))
       return(NULL)
     })
   }else{

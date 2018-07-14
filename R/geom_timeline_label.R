@@ -1,7 +1,7 @@
 #' Plot Timeline (Label)
 #' 
 #' @description This function draws the labels for the data points of
-#'   the top \code{n} disastrous earthquakes in order of \code{RICHTER_SCALE}.
+#'   the top \code{n} disastrous earthquakes in order of \code{MAGNITUDE}.
 #'
 #' @param mapping A set of aesthetic mappings created by aes()
 #' @param data A dataframe object containing the earthquake data points
@@ -36,7 +36,7 @@
 #'
 #' @examples
 #' \dontrun{ggplot(data = y, aes(x = DATE, country = COUNTRY, label = LOCATION, 
-#'                      magnitude = RICHTER_SCALE)) + 
+#'                      magnitude = MAGNITUDE)) + 
 #'   geom_timeline(ctry = "USA", xmin = dmy("01/01/2010"), xmax = dmy("01/01/2016")) + 
 #'   geom_timeline_label(n_max = 5, ctry = "USA", 
 #'                       xmin = dmy("01/01/2010"), 
