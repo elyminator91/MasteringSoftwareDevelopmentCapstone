@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/elyminator91/MasteringSoftwareDevelopmentCapstone.svg?branch=master)](https://travis-ci.org/elyminator91/MasteringSoftwareDevelopmentCapstone)
+
 # MasteringSoftwareDevelopmentCapstone
 
 This package contains functions to clean and visualise earthquake data.
