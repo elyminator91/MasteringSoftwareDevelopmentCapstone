@@ -49,7 +49,8 @@ head(cleaned_data, 5)
 
 ## Create Timeline Plot
 ```{r, fig.height=4, fig.width=5}
-ggplot(data = y, aes(x = DATE, country = COUNTRY, label = LOCATION, magnitude = MAGNITUDE)) +
+ggplot(data = cleaned_data, 
+       aes(x = DATE, country = COUNTRY, label = LOCATION, magnitude = MAGNITUDE)) +
   geom_timeline(ctry = "MEXICO", xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018")) +
   geom_timeline_label(n_max = 2, ctry = "MEXICO", 
                       xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018")) +

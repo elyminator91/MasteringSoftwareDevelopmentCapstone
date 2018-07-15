@@ -22,6 +22,7 @@ library(stringr)
 library(lubridate)
 library(ggplot2)
 library(leaflet)
+library(MasteringSoftwareDevelopmentCapstone)
 ```
 
 ## Import Dataset
@@ -55,14 +56,15 @@ head(cleaned_data, 5)
 ## Create Timeline Plot
 
 ```r
-ggplot(data = y, aes(x = DATE, country = COUNTRY, label = LOCATION, magnitude = MAGNITUDE)) +
+ggplot(data = cleaned_data, 
+       aes(x = DATE, country = COUNTRY, label = LOCATION, magnitude = MAGNITUDE)) +
   geom_timeline(ctry = "MEXICO", xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018")) +
   geom_timeline_label(n_max = 2, ctry = "MEXICO", 
                       xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018")) +
   theme_classic()
 ```
 
-![](MasteringSoftwareDevelopmentCapstone_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](MasteringSoftwareDevelopmentCapstone_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ## Create Map Plot
 
@@ -73,4 +75,4 @@ cleaned_data %>%
   eq_map(annot_col = "popup_text")
 ```
 
-preserveead6de4069069c1f
+preserve18af4693b55028da
