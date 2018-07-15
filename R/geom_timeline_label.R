@@ -57,7 +57,7 @@ geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "identity",
   )
 }
 
-GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel",
+GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                                       required_aes = c("label", "magnitude"),
                                       draw_key = ggplot2::draw_key_blank,
                                       setup_data = function(data, params){
