@@ -29,7 +29,8 @@ tryCatch({
                                             label = LOCATION, 
                                             magnitude = MAGNITUDE)) + 
     geom_timeline(ctry = "MEXICO", 
-                  xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018")) +
+                  xmin = dmy("01/01/2000"), 
+                  xmax = dmy("01/01/2018")) +
     theme_classic()
   expect_that(length(data_plot$layers), is_equivalent_to(1))
   expect_that(data_plot$labels, is_equivalent_to(c("DATE", "COUNTRY",
@@ -38,7 +39,8 @@ tryCatch({
   context("geom_timeline_label")
   data_plot <- data_plot +
     geom_timeline_label(n_max = 2, ctry = "MEXICO", 
-                        xmin = dmy("01/01/2000"), xmax = dmy("01/01/2018"))
+                        xmin = dmy("01/01/2000"), 
+                        xmax = dmy("01/01/2018"))
   expect_that(length(data_plot$layers), is_equivalent_to(2))
   
   context("eq_map")

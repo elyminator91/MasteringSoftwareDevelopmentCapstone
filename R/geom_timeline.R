@@ -51,7 +51,7 @@ geom_timeline <- function(mapping = NULL, data = NULL, stat = "identity",
   )
 }
 
-GeomTimeline <- ggplot2::ggproto("GeomTimeline", Geom,
+GeomTimeline <- ggplot2::ggproto("GeomTimeline",
                                  required_aes = c("x", "country"),
                                  default_aes = ggplot2::aes(shape = 21, 
                                                             colour = "black", 

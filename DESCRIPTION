@@ -12,3 +12,9 @@ Suggests: testthat,
     rmarkdown
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+Imports: dplyr,
+    ggplot2,
+    leaflet,
+    lubridate,
+    readr,
+    stringr
