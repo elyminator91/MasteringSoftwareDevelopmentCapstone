@@ -25,7 +25,7 @@
 
 eq_map <- function(filtered_data, annot_col = "DATE"){
   map = leaflet::leaflet() %>%
-    leaflet::addProviderTiles(providers$OpenStreetMap) %>%
+    leaflet::addProviderTiles(leaflet::providers$OpenStreetMap) %>%
     leaflet::addTiles() %>%
     leaflet::addCircleMarkers(data = filtered_data,
                               radius = ~ MAGNITUDE,

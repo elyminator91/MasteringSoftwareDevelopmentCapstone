@@ -45,7 +45,7 @@ tryCatch({
   
   context("eq_map")
   test_data <- test_data %>% 
-    filter(COUNTRY == "MEXICO" & year(DATE) >= 2000)
+    filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000)
   data_map <- test_data %>%
     eq_map()
   expect_that(class(data_map), is_equivalent_to(c("leaflet", "htmlwidget")))
